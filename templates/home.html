@@ -1,0 +1,40 @@
+{% extends 'nav.html' %}
+
+{% block content %}
+
+<h1 class="text-center">Shorty - URL Shortening Service</h1>
+
+
+{% if error %}
+
+<div class="container shadow p-4">
+    <div class="row">
+        <div class="col-12 text-center">
+            <p>The Url you are looking for doesn't exist</p>
+            <a href="/dashboard" class="btn btn-primary">Shorten Your URL</a>
+        </div>
+    </div>
+</div>
+
+{% endif %}
+
+<main role="main" class="inner cover">
+    <br>
+    <div class="col-12 text-center">
+    <p class="lead" style="text-align: center;">Shorty is a URL Shortening Service built to shorten all your long URLs on the go.<br>Create your customized short URLs or just shorten it randomly.
+        {% if user.is_authenticated %}
+        <br><br>Start shortening now!!</p>
+        {% else %}
+        <br><br>Sign Up now and start shortening.</p>
+        {% endif %}
+    <p class="lead" style="text-align: center;">
+      <a href="/dashboard" class="btn btn-lg btn-secondary" style="align-items: center;">Shorten URL</a>
+    </p>
+    </div>
+  </main>
+
+</body>
+
+</html>
+
+{% endblock %}
