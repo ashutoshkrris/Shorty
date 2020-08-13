@@ -4,7 +4,7 @@ Shorty is a URL shortening service built using Django. This service includes use
 
 ## Website Link 
 
-You can visit the site [here](https://srtyurl.herokuapp.com/) or https://srtyurl.herokuapp.com/.
+You can visit the site [here](http://www.srty.tk/) or http://www.srty.tk/.
 
 ## Working Demo
 
