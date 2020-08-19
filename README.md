@@ -26,7 +26,7 @@ You can visit the site [here](http://www.srty.tk/) or http://www.srty.tk/.
 
 ## Getting Started
 
-* Clone the repository
+* [Fork this repository](https://github.com/ashutoshkrris/Shorty/fork) and clone the forked repository
 
 * Change the working directory to the folder where you downloaded the files
 
