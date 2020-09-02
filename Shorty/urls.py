@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from authentication.views import loginPage, signup, logout
+from authentication.views import loginPage, signup, logout, passwordChange
 from URLHandler.views import dashboard, generate, home, deleteurl
 
 urlpatterns = [
@@ -23,9 +23,10 @@ urlpatterns = [
     path('', home),
     path('signup/', signup, name="signup"),
     path('loginPage/', loginPage, name="loginPage"),
-    path('logout/', logout, name = "logout"),
-    path('dashboard/', dashboard, name = "dashboard"),
-    path('generate/', generate, name = "generate"),
+    path('logout/', logout, name="logout"),
+    path('passwordChange/', passwordChange, name="passwordChange"),
+    path('dashboard/', dashboard, name="dashboard"),
+    path('generate/', generate, name="generate"),
     path('deleteurl/', deleteurl, name="deleteurl"),
-    path('<str:query>/', home, name="home")
+    path('<str:query>/', home, name="home"),
 ]

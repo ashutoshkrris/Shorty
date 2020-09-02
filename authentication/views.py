@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 
@@ -56,3 +57,23 @@ def signup(request):
 def logout(request):
     auth.logout(request)
     return redirect('/loginPage')
+
+@login_required(login_url='/loginPage/')
+def passwordChange(request):
+    if request.method == 'POST':
+        current = request.POST['oldPassword']
+        newpass = request.POST['newPassword']
+        conpass = request.POST['confirmPassword']
+        if newpass==conpass:
+            user = User.objects.get(id=request.user.id)
+            check = user.check_password(current)
+            if check == True:
+                user.set_password(newpass)
+                user.save()
+                messages.success(request, "Password Changed")
+                return redirect(loginPage)
+            else:
+                return render(request, 'passwordChange.html', {'error' : 'Current password is incorrect.'})
+        else:
+            return render(request,'passwordChange.html', {'error' : 'New Password and Confirm password don\'t match.'})
+    return render(request,'passwordChange.html')
