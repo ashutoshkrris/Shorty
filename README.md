@@ -2,6 +2,10 @@
 
 Shorty is a URL shortening service built using Django. This service includes user authentication as well as shortening service. The app also keeps tracks of URLs that you have already shortened and it can show you how many times that site has been visited using that link.
 
+## Website Link 
+
+You can visit the site [here](http://www.srty.me/) or http://www.srty.me/.
+
 ## Working Demo
 
 * **Homepage**
@@ -22,7 +26,7 @@ Shorty is a URL shortening service built using Django. This service includes use
 
 ## Getting Started
 
-* Clone the repository
+* [Fork this repository](https://github.com/ashutoshkrris/Shorty/fork) and clone the forked repository
 
 * Change the working directory to the folder where you downloaded the files
 
