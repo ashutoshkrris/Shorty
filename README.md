@@ -8,7 +8,7 @@ You can visit the site [here](http://www.srty.me/) or http://www.srty.me/.
 
 ## Working Demo
 
-* **Homepage**
+* **Homepage(before login)**
 
 <img src="https://github.com/ashutoshkrris/Shorty/blob/master/demo/homepage.png" alt="Homepage" width=1000 height=500/>
 
@@ -20,9 +20,18 @@ You can visit the site [here](http://www.srty.me/) or http://www.srty.me/.
 
 <img src="https://github.com/ashutoshkrris/Shorty/blob/master/demo/login.png" alt="Login Page" width=1000 height=500/>
 
+* **Homepage(after login)**
+
+<img src="https://github.com/ashutoshkrris/Shorty/blob/master/demo/after_login.png" alt="Dashboard" width=1000 height=500/>
+
 * **Dashboard/Shortener**
 
 <img src="https://github.com/ashutoshkrris/Shorty/blob/master/demo/dashboard.png" alt="Dashboard" width=1000 height=500/>
+
+* **Change Password**
+
+<img src="https://github.com/ashutoshkrris/Shorty/blob/master/demo/password.png" alt="Dashboard" width=1000 height=500/>
+
 
 ## Getting Started
 
