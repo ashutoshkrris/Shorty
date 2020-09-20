@@ -56,27 +56,29 @@
 
             <div style="overflow: hidden;" class="customcontainer p-2">
                 <div id="right">
-                    <img src="{% qr_url_from_text u.originalURL %}" height="120" alt="Hello World!">
                     <div class="col-4">
-                        <form action="{% url 'deleteurl' %}" method="POST">
-                            {% csrf_token %}
-                            <input type="hidden" name="delete" value="{{ u.shortQuery }}">
-                            <input type="submit" class="btn btn-danger" value="Delete">
-                        </form>
+                        
                     </div>
                 </div>
                 <h6 style="text-overflow: ellipsis;">Original : <a href="{{ u.originalURL }}" target="_blank"
                         class="card-link">{{ u.originalURL }}</a>
                 </h6>
                 
-                
+                <div id="right">
+                    
+                    <img src="{% qr_url_from_text u.originalURL %}" height="120" alt="Hello World!">
+                    
+                </div>
                 <h6>Shorten : <a href="http://localhost:8000/{{ u.shortQuery }}" target="_blank"
                         class="card-link">http://localhost:8000/{{ u.shortQuery }}</a></h6>
                         <h6>Visits : {{ u.visits }} </h6>
                         <h6>Last Visited : {{u.updated_at}}(IST)</h6>
                          <h6>Created : {{u.created_at}}(IST)</h6>
-                        
-                
+                         <form action="{% url 'deleteurl' %}" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="delete" value="{{ u.shortQuery }}">
+                            <input type="submit" class="btn btn-danger" value="Delete">
+                        </form>   
             </div>
         </div>
         {% endfor %}
