@@ -6,6 +6,17 @@ Shorty is a URL shortening service built using Django. This service includes use
 
 You can visit the site [here](http://.srty.me/) or http://srty.me
 
+## Features
+
+- Custom/Random Short Link Generator
+- Auto-generate QR Code
+- Keep track of all shortened URLs
+- User Authentication
+  - Sign Up
+  - Login
+  - Change Password
+  - Logout
+
 ## Working Demo
 
 * **Homepage(before login)**
@@ -31,6 +42,11 @@ You can visit the site [here](http://.srty.me/) or http://srty.me
 * **Change Password**
 
 <img src="https://github.com/ashutoshkrris/Shorty/blob/master/demo/password.png" alt="Dashboard" width=1000 height=500/>
+
+
+## Open Source
+
+This is a completely open sourced project. You can contribute to it if you want to add some feature or improve some feature. Feel free to create a pull request.
 
 
 ## Getting Started
