@@ -1,3 +1,11 @@
+![Open Source? Yes!](https://badgen.net/badge/Open%20Source%20%3F/Yes%21/blue?icon=github)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+![GitHub stars](https://img.shields.io/github/stars/ashutoshkrris/Shorty?style=social)
+![GitHub forks](https://img.shields.io/github/forks/ashutoshkrris/Shorty?style=social)
+[![GitHub pull-requests](https://img.shields.io/github/issues-pr/ashutoshkrris/Shorty.svg)](https://GitHub.com/AM1CODES/Poke-Dex/pull/)
+![Hacktoberfest2020](https://img.shields.io/github/hacktoberfest/2020/badges/shields?label=hacktoberfest%202020)
+
+
 # Shorty - URL Shortener
 
 Shorty is a URL shortening service built using Django. This service includes user authentication as well as shortening service. The app also keeps tracks of URLs that you have already shortened and it can show you how many times that site has been visited using that link. In addition to shortening URLs, it will also auto-generate QR codes for the shortened links.
