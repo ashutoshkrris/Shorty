@@ -8,3 +8,5 @@ Contributing  Guidelines are as follows -
 7. Push the changes using the command - ```git push origin [branch-name]```
 8. Creat a Pull request.
 9. Star this Repository.
+
+Once, you are ready to make a pull request, please refer to these [intructions](https://github.com/ashutoshkrris/Shorty/blob/master/contributors/README.md) to get yourself added in the [Contributors page](https://ashutoshkrris.github.io/Shorty/).

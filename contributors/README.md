@@ -8,4 +8,4 @@ Before submitting your Pull Request, please follow the instructions :
     * Github Profile Link
     * About(50-60 characters)
 
-This will allow me to add your information in the Contributors page.
+This will allow me to add your information in the [Contributors page](https://ashutoshkrris.github.io/Shorty/).
