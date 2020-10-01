@@ -6,15 +6,15 @@
 ![Hacktoberfest2020](https://img.shields.io/github/hacktoberfest/2020/badges/shields?label=hacktoberfest%202020)
 
 
-# Shorty - URL Shortener
+# Shorty - URL Shortener :memo:
 
 Shorty is a URL shortening service built using Django. This service includes user authentication as well as shortening service. The app also keeps tracks of URLs that you have already shortened and it can show you how many times that site has been visited using that link. In addition to shortening URLs, it will also auto-generate QR codes for the shortened links.
 
-## Website Link 
+## Website Link :bookmark_tabs:
 
 You can visit the site [here](http://.srty.me/) or http://srty.me
 
-## Features
+## Features :hearts:
 
 - Custom/Random Short Link Generator
 - Auto-generate QR Code
@@ -25,7 +25,7 @@ You can visit the site [here](http://.srty.me/) or http://srty.me
   - Change Password
   - Logout
 
-## Working Demo
+## Working Demo :computer:
 
 * **Homepage(before login)**
 
@@ -52,7 +52,7 @@ You can visit the site [here](http://.srty.me/) or http://srty.me
 <img src="https://github.com/ashutoshkrris/Shorty/blob/master/demo/password.png" alt="Dashboard" width=1000 height=500/>
 
 
-## Open Source
+## Open Source :two_women_holding_hands::two_men_holding_hands:
 
 This is a completely open sourced project. You can contribute to it if you want to add some feature or improve some feature. Feel free to create a pull request.
 
