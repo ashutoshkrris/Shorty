@@ -14,6 +14,14 @@ Shorty is a URL shortening service built using Django. This service includes use
 
 You can visit the site [here](http://.srty.me/) or http://srty.me
 
+## Open Source :two_women_holding_hands::two_men_holding_hands:
+
+This is a completely open sourced project. You can contribute to it if you want to add some feature or improve some feature. Feel free to create a pull request.
+
+Please refer to the [instructions](https://github.com/ashutoshkrris/Shorty/blob/master/contributors/README.md) to get yourself added in the [Contributors](https://ashutoshkrris.github.io/Shorty/) page.
+
+See you there!!
+
 ## Features :hearts:
 
 - Custom/Random Short Link Generator
@@ -51,10 +59,6 @@ You can visit the site [here](http://.srty.me/) or http://srty.me
 
 <img src="https://github.com/ashutoshkrris/Shorty/blob/master/demo/password.png" alt="Dashboard" width=1000 height=500/>
 
-
-## Open Source :two_women_holding_hands::two_men_holding_hands:
-
-This is a completely open sourced project. You can contribute to it if you want to add some feature or improve some feature. Feel free to create a pull request.
 
 
 ## Getting Started
