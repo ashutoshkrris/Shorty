@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'authentication',
     'URLHandler',
+    'home_shorty',
     'qr_code'
 ]
 

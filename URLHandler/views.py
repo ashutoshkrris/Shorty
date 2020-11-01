@@ -4,6 +4,7 @@ from django.contrib import messages
 from .models import shorturl
 import random
 import string
+from home_shorty.models import short_url
 
 # Create your views here.
 @login_required(login_url='/loginPage/')
@@ -26,7 +27,7 @@ def generate(request):
             if not check:
                 newURL = shorturl(
                     user = usr,
-                    orginalURL=original,
+                    originalURL=original,
                     shortQuery = short,
                 )
                 newURL.save()
@@ -69,6 +70,14 @@ def home(request, query=None):
             url_to_redirect = check.originalURL
             return redirect(url_to_redirect)
         except shorturl.DoesNotExist:
+            try:
+                check = short_url.objects.get(short_Query=query)
+                url_to_redirect = check.original_URL
+                print(url_to_redirect)
+                return redirect(url_to_redirect)
+            except short_url.DoesNotExist:
+                return render(request, 'home.html', {'error': 'Error'})
+        except:
             return render(request, 'home.html', {'error': 'Error'})
             
 @login_required(login_url='/loginPage/')

@@ -1,0 +1,98 @@
+{% extends 'nav.html' %}
+{% block content %}
+
+<div class="container shadow p-4">
+    <div class="row">
+        <div class="col-12 text-center py-2">
+            <h3>Shorten Your URL</h3>
+        </div>
+        <div class="col-10 col-sm-10 col-md-6 mx-auto">
+
+            {% if messages %}
+                {% for msg in messages %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{msg}}
+                    <button type="button" class="close" data-dismiss="alert" area-label="Close">
+                        <span area-hidden-true>&times;</span>
+                    </button>
+                </div>
+                {% endfor %}
+            {% endif %}
+
+            <form action="{% url 'shorten' %}" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <input type="url" name="original" class="form-control" placeholder="Loooooooooong URL Here">
+                </div>
+                <div class="form-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">http://localhost:8000/</div>
+                        <input type="text" name="short" class="form-control" placeholder="Short Char (6 chars)"
+                            maxlength="6" id="short">
+
+                    </div>
+                    <p id="shorthelp" class="form-text text-muted">Choose your custom short URL (6 characters only) or leave blank to generate randomly.</p>
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary px-4" value="Generate">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% if url %}
+<div class="container my-4">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h4>Your URLs</h4>
+        </div>
+    </div>
+    <div class="row justify-content-between">
+
+        <div class="col-10 col-sm-10 col-md-6 mb-2 mx-auto">
+
+            <div style="overflow: hidden;" class="customcontainer p-2">
+                <div id="right">
+                    <div class="col-4">
+                        
+                    </div>
+                </div>
+                <h6 style="text-overflow: ellipsis;">Original : <a href="{{ url.original_URL }}" target="_blank"
+                        class="card-link">{{ url.original_URL }}</a>
+                </h6>
+                <h6>Shorten : <a href="http://localhost:8000/{{ url.short_Query }}" target="_blank"
+                        class="card-link">http://localhost:8000/{{ url.short_Query }}</a></h6>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+
+<style>
+    .customcontainer {
+        min-width: 100%;
+        border: 2px solid #1d1d1d;
+        border-radius: 5px;
+        max-width: 100%;
+        height: 100%;
+    }
+</style>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>
+
+{% endblock %}

@@ -24,14 +24,16 @@ See you there!!
 
 ## Features :hearts:
 
-- Custom/Random Short Link Generator
-- Auto-generate QR Code
-- Keep track of all shortened URLs
+- Custom/Random Short Link Generator(for everyone)
+- Auto-generate QR Code(only for logged in users)
 - User Authentication
   - Sign Up
   - Login
   - Change Password
   - Logout
+- Keep track of all shortened URLs(only for logged in users)
+
+
 
 ## Working Demo :computer:
 
