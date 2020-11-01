@@ -64,11 +64,15 @@
             </li>
             {% else %}
             <li class="nav-item">
+              <a class="nav-link" href="{% url 'home_shortener' %}">Try Now</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="{% url 'loginPage' %}">Login</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'signup' %}">Signup</a>
             </li>
+            
             {% endif %}
             <li class="nav-item">
               <a class="nav-link" href="http://ashutoshkrris.herokuapp.com" target="_blank">Developer</a>
