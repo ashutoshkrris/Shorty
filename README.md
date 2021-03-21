@@ -3,7 +3,6 @@
 ![GitHub stars](https://img.shields.io/github/stars/ashutoshkrris/Shorty?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/ashutoshkrris/Shorty?style=social)
 [![GitHub pull-requests](https://img.shields.io/github/issues-pr/ashutoshkrris/Shorty.svg)](https://GitHub.com/ashutoshkrris/Shorty/pull/)
-![Hacktoberfest2020](https://img.shields.io/github/hacktoberfest/2020/badges/shields?label=hacktoberfest%202020)
 
 
 # Shorty - URL Shortener :memo:
