@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'authentication',
     'URLHandler',
     'home_shorty',
-    'qr_code'
+    'qr_code',
+    'api',
 ]
 
 MIDDLEWARE = [

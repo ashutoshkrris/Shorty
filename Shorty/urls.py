@@ -34,4 +34,5 @@ urlpatterns = [
     path('deleteurl/', deleteurl, name="deleteurl"),
     path('<str:query>/', home, name="home"),
     path('qr_code/', include('qr_code.urls', namespace="qr_code")),
+    path('api/',include('api.urls')),
 ]
