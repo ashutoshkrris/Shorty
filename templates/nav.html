@@ -14,9 +14,15 @@
       href="https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <meta property="og:title" content="Shorty - URL Shortener"/>
-    <meta property="og:description" content="Generate random or custom short URLs as well as QR Code for your long URLs."/>
-    <meta property="og:image" content="https://w0.pngwave.com/png/789/777/computer-icons-tinyurl-hyperlink-symbol-url-shortening-chain-png-clip-art.png"/>
+    <meta property="og:title" content="Shorty - URL Shortener" />
+    <meta
+      property="og:description"
+      content="Generate random or custom short URLs as well as QR Code for your long URLs."
+    />
+    <meta
+      property="og:image"
+      content="https://w0.pngwave.com/png/789/777/computer-icons-tinyurl-hyperlink-symbol-url-shortening-chain-png-clip-art.png"
+    />
     <title>Shorty | URL Shortener</title>
     <style>
       body {
@@ -52,12 +58,19 @@
             <li class="nav-item">
               <a class="nav-link" href="">Home</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" style="cursor: pointer" id="getAPIBtn"
+                >Get API Key</a
+              >
+            </li>
             {% if user.is_authenticated %}
             <li class="nav-item">
               <a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'passwordChange' %}">Change Password</a>
+              <a class="nav-link" href="{% url 'passwordChange' %}"
+                >Change Password</a
+              >
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'logout' %}">Logout</a>
@@ -72,10 +85,15 @@
             <li class="nav-item">
               <a class="nav-link" href="{% url 'signup' %}">Signup</a>
             </li>
-            
+
             {% endif %}
             <li class="nav-item">
-              <a class="nav-link" href="http://ashutoshkrris.herokuapp.com" target="_blank">Developer</a>
+              <a
+                class="nav-link"
+                href="http://ashutoshkrris.herokuapp.com"
+                target="_blank"
+                >Developer</a
+              >
             </li>
           </ul>
         </div>
@@ -92,5 +110,72 @@
         <a href="http://ashutoshkrris.herokuapp.com/"> Ashutosh Krishna</a>
       </div>
     </footer>
+    <script>
+      $("#getAPIBtn").click(function (e) {
+        e.preventDefault();
+        Swal.fire({
+          title: "Get API Key",
+          html: `<form action="" id="getAPIForm">
+          <input type="text" id="name" name="name" class="swal2-input" placeholder="Name">
+        <input type="email" id="email" name="email" class="swal2-input" placeholder="Email address">
+        <small>Enter valid email address only, we'll send API Key there only.</small>
+        <br>
+        <small>To use the API Key, you must send it in the request body as <strong>api_key</strong>.</small>
+        </form>
+        `,
+          confirmButtonText: "Send API Key",
+          showLoaderOnConfirm: true,
+          preConfirm: () => {
+            const email = Swal.getPopup().querySelector("#email").value;
+            const name = Swal.getPopup().querySelector("#name").value;
+            var pattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            if (!name) {
+              Swal.showValidationMessage(`Name is missing`);
+            } else if (!email) {
+              Swal.showValidationMessage(`Email address is missing.`);
+            } else if (String(email).search(pattern) == -1) {
+              Swal.showValidationMessage(`Enter a valid email address`);
+            }
+            return {
+              email: email,
+              name: name,
+            };
+          },
+          allowOutsideClick: () => !Swal.isLoading(),
+        }).then((result) => {
+          if (result.value) {
+            fetch(`/api/send-api-key/`, {
+              body: JSON.stringify({
+                email: result.value.email,
+                name: result.value.name,
+              }),
+              method: "POST",
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                if (data.api_success) {
+                  Swal.fire({
+                    icon: "success",
+                    title: "Sent",
+                    html: `We've sent your key on <strong>${result.value.email}</strong>`,
+                  });
+                } else if (data.api_duplicate) {
+                  Swal.fire({
+                    icon: "error",
+                    title: "Oops..",
+                    html: `We've already sent you an API Key on <strong>${result.value.email}</strong>`,
+                  });
+                } else {
+                  Swal.fire({
+                    icon: "error",
+                    title: "Oops..",
+                    text: `We've encountered some error while sending key. Please try again.`,
+                  });
+                }
+              });
+          }
+        });
+      });
+    </script>
   </body>
 </html>
