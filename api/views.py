@@ -9,6 +9,9 @@ from .models import APIKey
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from django.core.mail import EmailMultiAlternatives
+from django.shortcuts import redirect
+from http import HTTPStatus
+
 
 UPPERCASE = list(string.ascii_uppercase)
 LOWECASE = string.ascii_lowercase
@@ -34,7 +37,7 @@ def send_api(request):
             name = request_data['name']
             user_email = request_data['email']
             if APIKey.objects.filter(email=user_email).exists():
-                return JsonResponse({'api_duplicate': True})
+                return JsonResponse({'api_duplicate': True}, status=HTTPStatus.CONFLICT)
             api_key = create_api()
             new_key = APIKey(name=name, email=user_email, api_key=api_key)
             new_key.save()
@@ -56,14 +59,16 @@ def send_api(request):
             try:
                 email.send()
                 print("Sent")
-                return JsonResponse({'api_success': True})
+                return JsonResponse({'api_success': True, 'api_key': api_key}, status=HTTPStatus.CREATED)
             except Exception as e:
                 print(e)
-                return JsonResponse({'api_error': True})
+                return JsonResponse({'api_error': True, 'message': 'Could not send email'}, status=HTTPStatus.INTERNAL_SERVER_ERROR)
 
         except Exception as e:
             print(e)
-            return JsonResponse({'api_error': True})
+            return JsonResponse({'api_error': True, 'message': 'You did not pass sufficient data.'}, status=HTTPStatus.BAD_REQUEST)
+    else:
+        return JsonResponse({'api_error': True, 'message': 'GET Request not allowed'}, status=HTTPStatus.METHOD_NOT_ALLOWED)
 
 
 def short_generate(request):
@@ -75,7 +80,7 @@ def short_generate(request):
                 try:
                     api = APIKey.objects.get(api_key=api_key)
                 except APIKey.DoesNotExist:
-                    return JsonResponse({'error': 'Invalid API Key'})
+                    return JsonResponse({'error': 'Invalid API Key'}, status=HTTPStatus.UNAUTHORIZED)
                 if api.usage < API_LIMIT:
                     if request_data.get('original') and request_data.get('short'):
                         original = request_data['original']
@@ -90,9 +95,9 @@ def short_generate(request):
                             newURL.save()
                             api.usage += 1
                             api.save()
-                            return JsonResponse({'original': original, 'short': f"https://srty.me/{short}"})
+                            return JsonResponse({'original': original, 'short': f"https://srty.me/{short}"}, status=HTTPStatus.CREATED)
                         else:
-                            return JsonResponse({'error': 'The custom url is already used.'})
+                            return JsonResponse({'error': 'The custom url is already used.'}, status=HTTPStatus.CONFLICT)
                     elif request_data['original']:
                         original = request_data['original']
                         generated = False
@@ -109,16 +114,20 @@ def short_generate(request):
                                 newURL.save()
                                 api.usage += 1
                                 api.save()
-                                return JsonResponse({'original': original, 'short': f"https://srty.me/{short}"})
+                                return JsonResponse({'original': original, 'short': f"https://srty.me/{short}"}, status=HTTPStatus.CREATED)
                             else:
                                 continue
                 else:
                     api.expired = True
                     api.save()
-                    return JsonResponse({'error': 'API Key usage limit exceeded'})
+                    return JsonResponse({'error': 'API Key usage limit exceeded'}, status=HTTPStatus.FORBIDDEN)
             else:
-                return JsonResponse({'error': 'API Key not provided'})
+                return JsonResponse({'error': 'API Key not provided'}, status=HTTPStatus.UNAUTHORIZED)
         except Exception:
-            return JsonResponse({'error': 'Empty Fields'})
+            return JsonResponse({'error': 'Empty Fields'}, status=HTTPStatus.PARTIAL_CONTENT)
     else:
-        return JsonResponse({'message': 'Please provide original and(or) custom url to shorten(or customise). '})
+        return JsonResponse({'message': 'Please provide original and(or) custom url to shorten(or customise). '}, status=HTTPStatus.PARTIAL_CONTENT)
+
+
+def api_doc(request):
+    return redirect(to='https://documenter.getpostman.com/view/12174054/TzCP8nwH')
