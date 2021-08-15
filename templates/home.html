@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col-12 text-center">
             <p>The Url you are looking for doesn't exist</p>
-            <a href="/dashboard" class="btn btn-primary">Shorten Your URL</a>
+            <a href="{% url 'dashboard' %}" class="btn btn-primary">Shorten Your URL</a>
         </div>
     </div>
 </div>
@@ -28,7 +28,7 @@
         <br><br>Sign Up now and start shortening.</p>
         {% endif %}
     <p class="lead" style="text-align: center;">
-      <a href="/dashboard" class="btn btn-lg btn-secondary" style="align-items: center;">Shorten URL</a>
+      <a href="{% url 'dashboard' %}" class="btn btn-lg btn-secondary" style="align-items: center;">Shorten URL</a>
     </p>
     </div>
   </main>
